@@ -4,7 +4,7 @@ import {
   AiFillTwitterCircle,
   AiFillLinkedin,
 } from "react-icons/ai";
-import GroovyDoodle from "../Assets/GroovyDoodle.svg";
+import GroovyDoodle from "../../Assets/GroovyDoodle.svg";
 
 function Footer() {
   return (
@@ -35,7 +35,7 @@ function Footer() {
           </ul>
         </div>
       </div>
-      <div className="lg:max-h-[100%] sm:w-[100%] flex-grow-0">
+      <div className="sm:w-[25%] sm:col-span-3 lg:col-span-1 lg:w-[100%] py-2 md:w-[50%]">
         <img src={GroovyDoodle} alt="pic" />
       </div>
     </div>
