@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ user }) {
   const [nav, setNav] = useState(false);
 
   const handleNav = () => {
@@ -20,7 +20,11 @@ function Navbar() {
         <li className="p-4 cursor-pointer">Workouts</li>
         <li className="p-4 cursor-pointer">Community</li>
         <li className="p-4 cursor-pointer">
-          <Link to="/login">Login/Sign-up</Link>
+          {!user ? (
+            <Link to="/login">Login/Sign-up</Link>
+          ) : (
+            <Link to="/profile">{user}'s Profile</Link>
+          )}
         </li>
       </ul>
       <div onClick={handleNav} className="cursor-pointer block md:hidden">
