@@ -1,19 +1,28 @@
 import React from "react";
-import Navbar from "./Components/Navbar.jsx";
-import Hero from "./Components/Hero";
-import Overview from "./Components/Overview";
-import Newsletter from "./Components/Newsletter";
-import Footer from "./Components/Footer";
-import NavBox from "./Components/NavBox";
+import Home from "./Components/Home/Home.jsx";
+import Login from "./Components/Auth/Login.jsx";
+import SignUp from "./Components/Auth/Signup.jsx";
+import Profile from "./Components/Profile/Profile";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { AuthProvider } from "./Contexts/AuthContext";
+import { useSelector } from "react-redux";
+
 function App() {
+  const user = useSelector((state) => {
+    console.log(state.auth.username);
+    return state.auth.username;
+  });
+
   return (
     <div className="App">
-      <Navbar />
-      <Hero />
-      <Overview />
-      <Newsletter />
-      <NavBox />
-      <Footer />
+      <AuthProvider>
+        <Routes>
+          <Route path="/home" element={<Home />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/signup" element={<SignUp />}></Route>
+          <Route path="/profile" element={<Profile />}></Route>
+        </Routes>
+      </AuthProvider>
     </div>
   );
 }

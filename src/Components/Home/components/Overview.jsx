@@ -1,5 +1,5 @@
 import React from "react";
-import SprintingDoodle from "../Assets/SprintingDoodle.svg";
+import SprintingDoodle from "../../../Assets/SprintingDoodle.svg";
 
 function Overview() {
   return (
