@@ -16,7 +16,7 @@ function SignUpMenu() {
             <input
               className="w-full rounded-md p-3 flex text-black bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md"
               placeholder="First Name *"
-              type="email"
+              type="name"
             ></input>
             <input
               className=" w-full rounded-md p-3 flex text-black bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md lg:ml-[1rem]"
