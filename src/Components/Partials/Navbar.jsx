@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import NavBarDropDown from "./components/NavBarDropDown.jsx";
 
 function Navbar({ user }) {
   const [nav, setNav] = useState(false);
-
   const handleNav = () => {
     setNav(!nav);
   };
@@ -19,14 +19,22 @@ function Navbar({ user }) {
         <li className="p-4 cursor-pointer">About</li>
         <li className="p-4 cursor-pointer">Workouts</li>
         <li className="p-4 cursor-pointer">Community</li>
-        <li className="p-4 cursor-pointer">
-          {!user ? (
-            <Link to="/login">Login/Sign-up</Link>
-          ) : (
-            <Link to="/profile">{user}'s Profile</Link>
-          )}
-        </li>
+        {!user ? (
+          <li className="p-4 cursor-pointer">
+            <Link to="/signup">Signup</Link>
+          </li>
+        ) : (
+          <li className="p-4 cursor-pointer rounded-full border-2 border-gray-600 focus:border-white focus:outline-none w-[4rem] overflow-hidden">
+            {" "}
+            <img
+              className="h-full w-full object-cover rounded-full "
+              alt="img"
+              src={user.icon}
+            />
+          </li>
+        )}
       </ul>
+
       <div onClick={handleNav} className="cursor-pointer block md:hidden">
         {nav ? <AiOutlineClose /> : <AiOutlineMenu size={20} />}
       </div>
@@ -49,6 +57,7 @@ function Navbar({ user }) {
             Community
           </li>
           <li className="p-4 cursor-pointer ">Login/Sign-up</li>
+          <NavBarDropDown />
         </ul>
       </div>
     </div>

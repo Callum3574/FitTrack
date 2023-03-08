@@ -9,15 +9,15 @@ import { useSelector } from "react-redux";
 
 function App() {
   const user = useSelector((state) => {
-    console.log(state.auth.username);
-    return state.auth.username;
+    console.log(state.auth.user);
+    return state.auth.user;
   });
 
   return (
     <div className="App">
       <AuthProvider>
         <Routes>
-          <Route path="/home" element={<Home />}></Route>
+          <Route path="/home" element={<Home user={user} />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
