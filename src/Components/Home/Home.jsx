@@ -11,12 +11,12 @@ import { checkingUser } from "../../store/store";
 import { useSelector } from "react-redux";
 import { useAuth } from "../../Contexts/AuthContext.js";
 
-function Home() {
+function Home({ user }) {
   const { currentUser } = useAuth();
   const dispatch = useDispatch();
-  const user = useSelector((state) => {
-    return state.auth.username;
-  });
+  // const user = useSelector((state) => {
+  //   return state.auth.username;
+  // });
 
   useEffect(() => {
     const checkingCurrentUser = async () => {
@@ -27,7 +27,7 @@ function Home() {
     if (currentUser) {
       checkingCurrentUser();
     }
-  }, [currentUser]);
+  }, []);
 
   return (
     <div>
