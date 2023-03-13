@@ -1,16 +1,15 @@
 import React, { useEffect } from "react";
-import Navbar from "../Partials/Navbar";
-import Hero from "./components/Hero";
-import Overview from "./components/Overview";
-import Newsletter from "./components/Newsletter";
-import NavBox from "./components/NavBox";
-import Footer from "../Partials/Footer";
+import Navbar from "../Partials/Navbar.jsx";
+import Footer from "../Partials/Footer.jsx";
+import Walking from "./components/Walking/Walking.jsx";
+import Running from "./components/Running/Running.jsx";
+import Weights from "./components/Weights/Weights.jsx";
 import checkUser from "../Auth/CheckUser.jsx";
 import { useDispatch } from "react-redux";
 import { checkingUser } from "../../store/store";
 import { useAuth } from "../../Contexts/AuthContext.js";
 
-function Home({ user }) {
+function Workouts({ user }) {
   const { currentUser } = useAuth();
   const dispatch = useDispatch();
 
@@ -24,17 +23,17 @@ function Home({ user }) {
       checkingCurrentUser();
     }
   }, []);
-
   return (
-    <div>
-      <Navbar user={user} />
-      <Hero user={user} />
-      <Overview />
-      <Newsletter />
-      <NavBox />
-      <Footer />
+    <div className="">
+      <div>
+        <Navbar user={user} />
+        <Walking />
+        <Running />
+        <Weights />
+        <Footer />
+      </div>
     </div>
   );
 }
 
-export default Home;
+export default Workouts;
