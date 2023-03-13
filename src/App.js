@@ -24,11 +24,23 @@ function App() {
           ></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
-          <Route path="/profile" element={<Profile />}></Route>
-          <Route path="/workouts" element={<Workouts />} />
-          <Route path="/workouts/running" element={<RunningDash />} />
-          <Route path="/workouts/walking" element={<WalkingDash />} />
-          <Route path="/workouts/weights" element={<WeightsDash />} />
+          <Route path="/profile" element={<Profile user={user} />}></Route>
+          <Route
+            path="/workouts"
+            element={<Workouts user={user} setUser={setUser} />}
+          />
+          <Route
+            path="/workouts/running"
+            element={<RunningDash user={user} />}
+          />
+          <Route
+            path="/workouts/walking"
+            element={<WalkingDash user={user} />}
+          />
+          <Route
+            path="/workouts/weights"
+            element={<WeightsDash user={user} />}
+          />
         </Routes>
       </AuthProvider>
     </div>

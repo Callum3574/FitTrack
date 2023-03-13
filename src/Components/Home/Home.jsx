@@ -24,7 +24,7 @@ function Home({ user, setUser }) {
 
   return (
     <div>
-      <Navbar user={user} />
+      <Navbar setUser={setUser} user={user} />
       <Hero user={user} />
       <Overview />
       <Newsletter />
