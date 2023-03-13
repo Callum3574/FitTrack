@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../Partials/Navbar";
 import Hero from "./components/Hero";
 import Overview from "./components/Overview";
@@ -7,21 +7,18 @@ import NavBox from "./components/NavBox";
 import Footer from "../Partials/Footer";
 import checkUser from "../Auth/CheckUser.jsx";
 import { useDispatch } from "react-redux";
-import { checkingUser } from "../../store/store";
 import { useAuth } from "../../Contexts/AuthContext.js";
 
-function Home({ user }) {
+function Home({ user, setUser }) {
   const { currentUser } = useAuth();
-  const dispatch = useDispatch();
 
   useEffect(() => {
-    const checkingCurrentUser = async () => {
-      await checkUser(currentUser);
-      await dispatch(checkingUser(currentUser));
+    const checkingUser = async () => {
+      setUser(await checkUser(currentUser));
     };
 
     if (currentUser) {
-      checkingCurrentUser();
+      checkingUser();
     }
   }, []);
 

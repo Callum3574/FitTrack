@@ -6,18 +6,16 @@ import Running from "./components/Running/Running.jsx";
 import Weights from "./components/Weights/Weights.jsx";
 import checkUser from "../Auth/CheckUser.jsx";
 import { useDispatch } from "react-redux";
-import { checkingUser } from "../../store/store";
 import { useAuth } from "../../Contexts/AuthContext.js";
+import { useGetAllDataQuery } from "../../store/slices/GymDataSlice.js";
 
 function Workouts({ user }) {
   const { currentUser } = useAuth();
-  const dispatch = useDispatch();
+  const { data } = useGetAllDataQuery();
+  console.log(data);
 
   useEffect(() => {
-    const checkingCurrentUser = async () => {
-      await checkUser(currentUser);
-      await dispatch(checkingUser(currentUser));
-    };
+    const checkingCurrentUser = async () => {};
 
     if (currentUser) {
       checkingCurrentUser();

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Home from "./Components/Home/Home.jsx";
 import Login from "./Components/Auth/Login.jsx";
 import SignUp from "./Components/Auth/Signup.jsx";
@@ -12,20 +12,20 @@ import { AuthProvider } from "./Contexts/AuthContext";
 import { useSelector } from "react-redux";
 
 function App() {
-  const user = useSelector((state) => {
-    console.log(state.auth.user);
-    return state.auth.user;
-  });
+  const [user, setUser] = useState(null);
 
   return (
     <div className="App">
       <AuthProvider>
         <Routes>
-          <Route path="/home" element={<Home user={user} />}></Route>
+          <Route
+            path="/home"
+            element={<Home user={user} setUser={setUser} />}
+          ></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
-          <Route path="/workouts" element={<Workouts user={user} />} />
+          <Route path="/workouts" element={<Workouts />} />
           <Route path="/workouts/running" element={<RunningDash />} />
           <Route path="/workouts/walking" element={<WalkingDash />} />
           <Route path="/workouts/weights" element={<WeightsDash />} />
