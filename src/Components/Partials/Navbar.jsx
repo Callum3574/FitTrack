@@ -10,28 +10,79 @@ function Navbar({ user }) {
   };
 
   return (
-    <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white w-full">
+    <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white w-full ">
       <h1 className="text-3xl font-bold text-[#00df9a]">FitTrack.</h1>
       <ul className="hidden md:flex">
         <li className="p-4 cursor-pointer">
           <Link to="/home">Home</Link>
         </li>
         <li className="p-4 cursor-pointer">About</li>
-        <li className="p-4 cursor-pointer">Workouts</li>
+        <li className="p-4 cursor-pointer">
+          <Link to="/workouts">Workouts</Link>
+        </li>
         <li className="p-4 cursor-pointer">Community</li>
         {!user ? (
-          <li className="p-4 cursor-pointer">
-            <Link to="/signup">Signup</Link>
-          </li>
+          <div>
+            <li className="p-4 cursor-pointer">
+              <Link to="/signup">Signup</Link>
+            </li>
+          </div>
         ) : (
-          <li className="p-4 cursor-pointer rounded-full border-2 border-gray-600 focus:border-white focus:outline-none w-[4rem] overflow-hidden">
-            {" "}
-            <img
-              className="h-full w-full object-cover rounded-full "
-              alt="img"
-              src={user.icon}
-            />
-          </li>
+          <div>
+            <li className="p-4 cursor-pointer rounded-full border-2 border-gray-600 focus:border-white focus:outline-none w-[4rem] overflow-hidden">
+              <img
+                id="dropdownHoverButton"
+                data-dropdown-toggle="dropdownHover"
+                data-dropdown-trigger="hover"
+                className="h-full w-full object-cover rounded-full"
+                type="button"
+                alt="button"
+                src={user.icon}
+              />
+            </li>
+            <div
+              id="dropdownHover"
+              class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+            >
+              <ul
+                className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                aria-labelledby="dropdownHoverButton"
+              >
+                <li>
+                  <a
+                    href="/"
+                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    Dashboard
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/"
+                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    Settings
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/"
+                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    Earnings
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/"
+                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    Sign out
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         )}
       </ul>
 
@@ -57,7 +108,6 @@ function Navbar({ user }) {
             Community
           </li>
           <li className="p-4 cursor-pointer ">Login/Sign-up</li>
-          <NavBarDropDown />
         </ul>
       </div>
     </div>
