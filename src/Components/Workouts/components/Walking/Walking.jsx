@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function Walking() {
+function Walking({ data, user }) {
+  const navigate = useNavigate();
+  const openWalkingDash = () => {
+    navigate("/workouts/walking", { state: { data: data, user: user } });
+  };
+
   return (
     <div className="w-full py-16 text-black bg-white">
       <div className="">
@@ -17,11 +23,13 @@ function Walking() {
               By accessing the dashboard, you can view your progress, track your
               workouts, and monitor your achievements.{" "}
             </p>
-            <Link className="mx-auto" to="/workouts/walking">
-              <button className="bg-[#00df9a] w-[200px] rounded-md font-medium my-4  py-3 text-black">
-                DASHBOARD
-              </button>
-            </Link>
+
+            <button
+              onClick={openWalkingDash}
+              className="bg-[#00df9a] w-[200px] rounded-md font-medium my-4 mx-auto py-3 text-black"
+            >
+              DASHBOARD
+            </button>
           </div>
         </div>
       </div>

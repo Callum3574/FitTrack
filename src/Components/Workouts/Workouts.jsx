@@ -6,30 +6,30 @@ import Running from "./components/Running/Running.jsx";
 import Weights from "./components/Weights/Weights.jsx";
 import checkUser from "../Auth/CheckUser.jsx";
 import { useDispatch } from "react-redux";
-import { checkingUser } from "../../store/store";
 import { useAuth } from "../../Contexts/AuthContext.js";
+import { useGetAllDataQuery } from "../../store/slices/GymDataSlice.js";
 
-function Workouts({ user }) {
+function Workouts({ user, setUser }) {
   const { currentUser } = useAuth();
-  const dispatch = useDispatch();
+  const { data } = useGetAllDataQuery(currentUser.uid);
 
   useEffect(() => {
-    const checkingCurrentUser = async () => {
-      await checkUser(currentUser);
-      await dispatch(checkingUser(currentUser));
+    const checkingUser = async () => {
+      setUser(await checkUser(currentUser));
     };
 
     if (currentUser) {
-      checkingCurrentUser();
+      checkingUser();
     }
   }, []);
+
   return (
     <div className="">
       <div>
-        <Navbar user={user} />
-        <Walking />
-        <Running />
-        <Weights />
+        <Navbar setUser={setUser} user={user} />
+        <Walking user={user} data={data} />
+        <Running user={user} data={data} />
+        <Weights user={user} data={data} />
         <Footer />
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import NavBarDropDown from "./components/NavBarDropDown.jsx";
@@ -8,6 +8,8 @@ function Navbar({ user }) {
   const handleNav = () => {
     setNav(!nav);
   };
+
+  console.log(user);
 
   return (
     <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white w-full ">
@@ -24,7 +26,7 @@ function Navbar({ user }) {
         {!user ? (
           <div>
             <li className="p-4 cursor-pointer">
-              <Link to="/signup">Signup</Link>
+              <Link to="/login">Login</Link>
             </li>
           </div>
         ) : (
