@@ -11,6 +11,7 @@ import { useAuth } from "../../Contexts/AuthContext.js";
 
 function Home({ user, setUser }) {
   const { currentUser } = useAuth();
+  console.log(process.env.REACT_APP_BASE_URL);
 
   useEffect(() => {
     const checkingUser = async () => {

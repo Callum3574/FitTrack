@@ -11,6 +11,7 @@ const checkUser = async (user) => {
         name: data.name[0].firstname,
         icon: `https://api.dicebear.com/5.x/initials/svg?seed=${data.name[0].firstname}`,
         // rank: await userLevel(user.uid),
+        id: uid,
       };
     }
   } catch (e) {

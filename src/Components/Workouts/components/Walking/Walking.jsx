@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Walking({ data, user }) {
   const navigate = useNavigate();
   const openWalkingDash = () => {
     navigate("/workouts/walking", { state: { data: data, user: user } });
   };
+
 
   return (
     <div className="w-full py-16 text-black bg-white">

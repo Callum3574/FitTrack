@@ -7,7 +7,14 @@ export const gymDataApi = createApi({
     getAllData: builder.query({
       query: (id) => `all_walk_data/${id}`,
     }),
+    postWalk: builder.mutation({
+      query: (walk) => ({
+        url: "input_exercise",
+        method: "POST",
+        body: walk,
+      }),
+    }),
   }),
 });
 
-export const { useGetAllDataQuery } = gymDataApi;
+export const { useGetAllDataQuery, usePostWalkMutation } = gymDataApi;

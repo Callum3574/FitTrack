@@ -8,7 +8,7 @@ function Newsletter() {
           <h1 className="md:text-4xl sm:text-3xl text-2xl font-bold py-2">
             Want to find the best walk routes in your area?
           </h1>
-          <p>Sign up to weekly updates on best rates walks in your area</p>
+          <p>Sign up to weekly updates on best rated walks in your area</p>
         </div>
         <div className="my-4">
           <div className="flex flex-col sm:flex-row items-center justify-between w-full">
