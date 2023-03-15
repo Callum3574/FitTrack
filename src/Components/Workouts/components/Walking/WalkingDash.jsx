@@ -12,7 +12,7 @@ function WalkingDash() {
   return (
     <div>
       <Navbar user={user} />
-      <ExerciseOverview user={user} walking="Walking" />
+      <ExerciseOverview data={data} user={user} />
       <RecentWalks user={user} data={data} />
     </div>
   );

@@ -5,7 +5,7 @@ function RecentWalks({ data }) {
   return (
     <div className="w-full py-16 text-white px-4 bg-black">
       <div>
-        <h1 className="text-center lg:text-xl underline text-2xl lg:text-start lg:ml-3">
+        <h1 className="text-center lg:text-xl underline text-2xl  lg:ml-3">
           Recent walks
         </h1>
       </div>
