@@ -7,6 +7,7 @@ import Workouts from "./Components/Workouts/Workouts";
 import WeightsDash from "./Components/Workouts/components/Weights/WeightsDash";
 import RunningDash from "./Components/Workouts/components/Running/RunningDash";
 import WalkingDash from "./Components/Workouts/components/Walking/WalkingDash";
+import NotFound404 from "./Components/Partials/404";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./Contexts/AuthContext";
 import { useSelector } from "react-redux";
@@ -43,6 +44,7 @@ function App() {
               path="/workouts/weights"
               element={<WeightsDash user={user} />}
             />
+            <Route path="*" exact={true} element={<NotFound404 />} />
           </Routes>
         </AuthProvider>
       </ApiProvider>

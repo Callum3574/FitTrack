@@ -9,13 +9,6 @@ function WalkingDash() {
   const data = location.state && location.state.data;
   const user = location.state.user;
 
-  useEffect(() => {
-    const allWeatherAPI = async () => {
-      const weather = await fetchWeather();
-      console.log(weather);
-    };
-    allWeatherAPI();
-  }, []);
   return (
     <div>
       <Navbar user={user} />

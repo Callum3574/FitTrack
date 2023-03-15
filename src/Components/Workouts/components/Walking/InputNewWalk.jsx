@@ -68,7 +68,7 @@ function InputNewWalk({ user }) {
             <div className="mx-auto form-control w-full max-w-xs">
               <label className="label">
                 <span className="label-text">Where did you walk?</span>
-                <span className="label-text-alt">Location</span>
+                <span className="label-text-alt">Location*</span>
               </label>
               <input
                 type="text"
@@ -79,7 +79,7 @@ function InputNewWalk({ user }) {
               />
               <label className="label">
                 <span className="label-text">When did you complete walk?</span>
-                <span className="label-text-alt">Date</span>
+                <span className="label-text-alt">Date*</span>
               </label>
               <input
                 type="date"
@@ -90,7 +90,7 @@ function InputNewWalk({ user }) {
               />
               <label className="label">
                 <span className="label-text">How long for (mins)?</span>
-                <span className="label-text-alt">Duration</span>
+                <span className="label-text-alt">Duration*</span>
               </label>
               <input
                 type="number"
@@ -101,7 +101,7 @@ function InputNewWalk({ user }) {
               />
               <label className="label">
                 <span className="label-text">How many calories burnt?</span>
-                <span className="label-text-alt">Calories</span>
+                <span className="label-text-alt">Calories*</span>
               </label>
               <input
                 type="number"
@@ -112,7 +112,7 @@ function InputNewWalk({ user }) {
               />
               <label className="label">
                 <span className="label-text">How many steps?</span>
-                <span className="label-text-alt">Steps</span>
+                <span className="label-text-alt">Steps*</span>
               </label>
               <input
                 type="number"
@@ -123,7 +123,7 @@ function InputNewWalk({ user }) {
               />
               <label className="label">
                 <span className="label-text">How far did you walk?</span>
-                <span className="label-text-alt">Distance(km)</span>
+                <span className="label-text-alt">Distance(km)*</span>
               </label>
               <input
                 type="number"
@@ -134,7 +134,7 @@ function InputNewWalk({ user }) {
               />
               <label className="mx-auto label">
                 <span className="label-text">
-                  How would you rate your walk?
+                  How would you rate your walk?*
                 </span>
               </label>
               <div className="mx-auto rating card-actions mt-3s">

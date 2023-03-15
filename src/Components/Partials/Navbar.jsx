@@ -99,15 +99,17 @@ function Navbar({ user }) {
         }
       >
         <ul className="pt-12 uppercase">
-          <li className="p-4  cursor-pointer border-b border-gray-600">Home</li>
           <li className="p-4  cursor-pointer border-b border-gray-600">
-            About
+            <Link to="/home">Home</Link>
           </li>
           <li className="p-4  cursor-pointer border-b border-gray-600">
-            Workouts
+            <Link to="/about">About</Link>
           </li>
           <li className="p-4  cursor-pointer border-b border-gray-600">
-            Community
+            <Link to="/workouts">Workouts</Link>
+          </li>
+          <li className="p-4  cursor-pointer border-b border-gray-600">
+            <Link to="/community">Community</Link>
           </li>
           <li className="p-4 cursor-pointer ">Login/Sign-up</li>
         </ul>

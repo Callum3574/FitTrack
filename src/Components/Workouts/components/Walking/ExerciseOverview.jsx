@@ -25,7 +25,9 @@ function ExerciseOverview({ data, user }) {
     const settingWeather = async () => {
       setWeather(await fetchWeather());
     };
-    settingWeather();
+    if (highlights) {
+      settingWeather();
+    }
   }, []);
 
   return (
@@ -50,11 +52,15 @@ function ExerciseOverview({ data, user }) {
           <div className="stat">
             <div className="stat-title">Current Weather</div>
             <div className="flex flex-row">
-              <div className="stat-value">{weather.icon}</div>
-              <div className="stat-value ml-2">{weather.celsius}°</div>
+              <div className="stat-value">{!weather ? "⁉️" : weather.icon}</div>
+              <div className="stat-value ml-2">
+                {!weather ? "Loading.." : weather.celsius}°
+              </div>
             </div>
 
-            <div className="stat-desc">{weather.message}</div>
+            <div className="stat-desc">
+              {!weather ? "Loading.." : weather.message}
+            </div>
           </div>
           <div className="stat">
             <div className="stat-title">Current Rank</div>

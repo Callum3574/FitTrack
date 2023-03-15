@@ -1,6 +1,6 @@
 export const fetchWeather = async () => {
   const res = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=Manchester,uk&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`
+    `https://api.openweathermap.org/data/2.5/weather?q=Manchester, uk&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`
   );
   const data = await res.json();
 
@@ -33,6 +33,7 @@ export const fetchWeather = async () => {
       break;
     default:
       message = "confused";
+      icon = "⁉️";
   }
 
   const weatherFormatted = {
