@@ -10,7 +10,7 @@ function RecentWalks({ data }) {
         </h1>
       </div>
       <div className="sm:grid sm:grid-cols-2 sm:ml-10 md:grid md:grid-cols-3 md:p-10 lg:grid lg:grid-cols-4 lg:gap-x-8 lg:gap-y-8 mx-auto overflow-auto ">
-        {data.slice(0, 5).map((walk) => {
+        {data.slice(0, 6).map((walk) => {
           return <WalkCard walk={walk} />;
         })}
       </div>
