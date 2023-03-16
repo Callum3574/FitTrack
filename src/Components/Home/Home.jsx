@@ -11,6 +11,7 @@ import { useAuth } from "../../Contexts/AuthContext.js";
 
 function Home({ user, setUser }) {
   const { currentUser } = useAuth();
+  console.log(process.env.REACT_APP_BASE_URL);
 
   useEffect(() => {
     const checkingUser = async () => {
@@ -26,8 +27,8 @@ function Home({ user, setUser }) {
     <div>
       <Navbar setUser={setUser} user={user} />
       <Hero user={user} />
-      <Overview />
-      <Newsletter />
+      <Overview user={user} />
+      <Newsletter user={user} />
       <NavBox />
       <Footer />
     </div>

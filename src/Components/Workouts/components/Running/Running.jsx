@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-function Running() {
+function Running({ user }) {
   return (
     <div className="w-full py-16 text-white bg-black">
       <div className="">
@@ -15,9 +15,21 @@ function Running() {
               workouts, and monitor your achievements.{" "}
             </p>
             <Link className="mx-auto" to="/workouts/running">
-              <button className="bg-[#00df9a] w-[200px] rounded-md font-medium my-4  py-3 text-black">
-                DASHBOARD
-              </button>
+              {user ? (
+                <button
+                  // onClick={openWalkingDash}
+                  className="bg-[#00df9a] w-[200px] rounded-md font-medium my-4 mx-auto py-3 text-black"
+                >
+                  DASHBOARD
+                </button>
+              ) : (
+                <button
+                  className="bg-[#555555] w-[200px] rounded-md font-medium my-4 mx-auto py-3 text-white"
+                  disabled
+                >
+                  SIGN UP FOR ACCESS
+                </button>
+              )}
             </Link>
           </div>
         </div>

@@ -9,8 +9,9 @@ const checkUser = async (user) => {
       localStorage.setItem("name", data.name[0].firstname);
       return {
         name: data.name[0].firstname,
-        icon: `https://api.dicebear.com/5.x/initials/svg?seed=${data.name[0].firstname}`,
+        icon: `https://api.dicebear.com/5.x/identicon/svg?seed=${data.name[0].firstname}`,
         // rank: await userLevel(user.uid),
+        id: uid,
       };
     }
   } catch (e) {

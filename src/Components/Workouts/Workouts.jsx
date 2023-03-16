@@ -8,11 +8,16 @@ import checkUser from "../Auth/CheckUser.jsx";
 import { useDispatch } from "react-redux";
 import { useAuth } from "../../Contexts/AuthContext.js";
 import { useGetAllDataQuery } from "../../store/slices/GymDataSlice.js";
+import { useSelector } from "react-redux";
 
 function Workouts({ user, setUser }) {
   const { currentUser } = useAuth();
-  const { data } = useGetAllDataQuery(currentUser.uid);
+  const { data } = useGetAllDataQuery(currentUser ? currentUser.uid : null);
 
+  const states = useSelector((state) => {
+    return state;
+  });
+  console.log(states);
   useEffect(() => {
     const checkingUser = async () => {
       setUser(await checkUser(currentUser));
@@ -26,7 +31,7 @@ function Workouts({ user, setUser }) {
   return (
     <div className="">
       <div>
-        <Navbar setUser={setUser} user={user} />
+        <Navbar user={user} />
         <Walking user={user} data={data} />
         <Running user={user} data={data} />
         <Weights user={user} data={data} />

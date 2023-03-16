@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { useAuth } from "../../../Contexts/AuthContext.js";
+import { useNavigate } from "react-router-dom";
 
 function LoginMenu() {
   const [currentCredentials, setCurrentCredentials] = useState({
@@ -9,6 +10,7 @@ function LoginMenu() {
   });
 
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleLoginCredentials = (event) => {
     setCurrentCredentials((prev) => {
@@ -20,6 +22,7 @@ function LoginMenu() {
     e.preventDefault();
     try {
       await login(currentCredentials.email, currentCredentials.password);
+      navigate("/home");
     } catch (e) {
       console.error(e);
     }

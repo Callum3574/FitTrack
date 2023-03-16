@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Walking({ data, user }) {
   const navigate = useNavigate();
@@ -24,12 +25,21 @@ function Walking({ data, user }) {
               workouts, and monitor your achievements.{" "}
             </p>
 
-            <button
-              onClick={openWalkingDash}
-              className="bg-[#00df9a] w-[200px] rounded-md font-medium my-4 mx-auto py-3 text-black"
-            >
-              DASHBOARD
-            </button>
+            {user ? (
+              <button
+                onClick={openWalkingDash}
+                className="bg-[#00df9a] w-[200px] rounded-md font-medium my-4 mx-auto py-3 text-black"
+              >
+                DASHBOARD
+              </button>
+            ) : (
+              <button
+                className="bg-[#555555] w-[200px] rounded-md font-medium my-4 mx-auto py-3 text-white"
+                disabled
+              >
+                SIGN UP FOR ACCESS
+              </button>
+            )}
           </div>
         </div>
       </div>
