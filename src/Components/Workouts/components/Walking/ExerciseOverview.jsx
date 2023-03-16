@@ -67,6 +67,11 @@ function ExerciseOverview({ data, user }) {
             <div className="stat-value">{highlights.currentRank}</div>
             <div className="stat-desc">Jan 1st - Dec 31st</div>
           </div>
+          <div className="stat">
+            <div className="stat-title">Total Steps</div>
+            <div className="stat-value">{highlights.totalSteps}</div>
+            <div className="stat-desc">Jan 1st - Dec 31st</div>
+          </div>
 
           <div className="stat">
             <div className="stat-title">Distance Walked (km)</div>

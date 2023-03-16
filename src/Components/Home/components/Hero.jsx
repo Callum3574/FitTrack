@@ -1,6 +1,6 @@
 import React from "react";
 import Typed from "react-typed";
-
+import { Link } from "react-router-dom";
 function Hero({ user }) {
   return (
     <div className="text-white">
@@ -34,9 +34,20 @@ function Hero({ user }) {
           Join our community today and connect with like-minded individuals who
           share your interest in fitness and wellness.
         </p>
-        <button className="bg-[#00df9a] w-[200px] rounded-md font-medium my-4 mx-auto py-3 text-black">
-          JOIN NOW
-        </button>
+        {!user ? (
+          <Link to="/signup">
+            <button className="bg-[#00df9a] w-[200px] rounded-md font-medium my-4 mx-auto py-3 text-black">
+              JOIN NOW
+            </button>
+          </Link>
+        ) : (
+          <Link to="/workouts">
+            <button className="bg-[#00df9a] w-[200px] rounded-md font-medium my-4 mx-auto py-3 text-black">
+              Dashboard
+            </button>
+          </Link>
+        )}
+
         <div></div>
       </div>
     </div>

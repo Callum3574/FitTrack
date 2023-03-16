@@ -9,7 +9,6 @@ function Walking({ data, user }) {
     navigate("/workouts/walking", { state: { data: data, user: user } });
   };
 
-
   return (
     <div className="w-full py-16 text-black bg-white">
       <div className="">
@@ -26,12 +25,21 @@ function Walking({ data, user }) {
               workouts, and monitor your achievements.{" "}
             </p>
 
-            <button
-              onClick={openWalkingDash}
-              className="bg-[#00df9a] w-[200px] rounded-md font-medium my-4 mx-auto py-3 text-black"
-            >
-              DASHBOARD
-            </button>
+            {user ? (
+              <button
+                onClick={openWalkingDash}
+                className="bg-[#00df9a] w-[200px] rounded-md font-medium my-4 mx-auto py-3 text-black"
+              >
+                DASHBOARD
+              </button>
+            ) : (
+              <button
+                className="bg-[#555555] w-[200px] rounded-md font-medium my-4 mx-auto py-3 text-white"
+                disabled
+              >
+                SIGN UP FOR ACCESS
+              </button>
+            )}
           </div>
         </div>
       </div>

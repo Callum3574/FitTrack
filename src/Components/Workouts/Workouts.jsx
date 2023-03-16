@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 
 function Workouts({ user, setUser }) {
   const { currentUser } = useAuth();
-  const { data } = useGetAllDataQuery(currentUser.uid);
+  const { data } = useGetAllDataQuery(currentUser ? currentUser.uid : null);
 
   const states = useSelector((state) => {
     return state;

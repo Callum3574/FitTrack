@@ -217,27 +217,26 @@ function InputNewWalk({ user }) {
                   </div>
                 </div>
               )}
-            </div>
-          </div>
-
-          <div className="modal-action ">
-            <label
-              htmlFor="my-modal-5"
-              className="bg-[#00df9a]  rounded-md 
+              <div className="modal-action ">
+                <label
+                  htmlFor="my-modal-5"
+                  className="bg-[#00df9a]  rounded-md 
               w-[200px] font-medium my-4 text-center md:mx-0 py-3 text-black uppercase cursor-pointer"
-            >
-              EXIT
-            </label>
+                >
+                  EXIT
+                </label>
 
-            <button
-              onClick={onSubmit}
-              htmlFor="my-modal-5"
-              className="bg-[#00df9a] w-[200px] rounded-md font-medium my-4 md:mx-0 py-3 text-black uppercase text-center
+                <button
+                  onClick={onSubmit}
+                  htmlFor="my-modal-5"
+                  className="bg-[#00df9a] w-[200px] rounded-md font-medium my-4 md:mx-0 py-3 text-black uppercase text-center
                 cursor-pointer
                 "
-            >
-              SUBMIT
-            </button>
+                >
+                  SUBMIT
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

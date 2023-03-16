@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Weights() {
+function Weights({user}) {
   return (
     <div className="w-full py-16 text-black bg-white">
       <div className="">
@@ -17,11 +17,21 @@ function Weights() {
               By accessing the dashboard, you can view your progress, track your
               workouts, and monitor your achievements.{" "}
             </p>
-            <Link className="mx-auto" to="/workouts/weights">
-              <button className="bg-[#00df9a] w-[200px] rounded-md font-medium my-4  py-3 text-black">
+            {user ? (
+              <button
+                // onClick={openWalkingDash}
+                className="bg-[#00df9a] w-[200px] rounded-md font-medium my-4 mx-auto py-3 text-black"
+              >
                 DASHBOARD
               </button>
-            </Link>
+            ) : (
+              <button
+                className="bg-[#555555] w-[200px] rounded-md font-medium my-4 mx-auto py-3 text-white"
+                disabled
+              >
+                SIGN UP FOR ACCESS
+              </button>
+            )}
           </div>
         </div>
       </div>

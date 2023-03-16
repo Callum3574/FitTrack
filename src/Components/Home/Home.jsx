@@ -27,8 +27,8 @@ function Home({ user, setUser }) {
     <div>
       <Navbar setUser={setUser} user={user} />
       <Hero user={user} />
-      <Overview />
-      <Newsletter />
+      <Overview user={user} />
+      <Newsletter user={user} />
       <NavBox />
       <Footer />
     </div>
