@@ -22,7 +22,7 @@ function LoginMenu() {
     e.preventDefault();
     try {
       await login(currentCredentials.email, currentCredentials.password);
-      navigate("/home");
+      navigate("/");
     } catch (e) {
       console.error(e);
     }
