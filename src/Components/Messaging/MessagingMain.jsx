@@ -6,7 +6,6 @@ function MessagingMain({ user }) {
   return (
     <div>
       <Navbar user={user} />
-      <Chat user={user} />
       <Footer />
     </div>
   );

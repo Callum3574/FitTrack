@@ -30,6 +30,7 @@ function SignUpMenu() {
         id: id,
         firstName: currentCredentials.firstName,
         lastName: currentCredentials.lastName,
+        email: currentCredentials.email,
       }),
     });
     const data = await res.json();
