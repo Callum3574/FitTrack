@@ -23,13 +23,15 @@ function Navbar({ user, setUser }) {
       <h1 className="text-3xl font-bold text-[#00df9a]">FitTrack.</h1>
       <ul className="hidden md:flex">
         <li className="p-4 cursor-pointer">
-          <Link to="/home">Home</Link>
+          <Link to="/">Home</Link>
         </li>
         <li className="p-4 cursor-pointer">About</li>
         <li className="p-4 cursor-pointer">
           <Link to="/workouts">Workouts</Link>
         </li>
-        <li className="p-4 cursor-pointer">Community</li>
+        <Link to="/community">
+          <li className="p-4 cursor-pointer">Community</li>
+        </Link>
         {!user ? (
           <div>
             <li className="p-4 cursor-pointer">

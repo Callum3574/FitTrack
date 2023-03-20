@@ -5,7 +5,13 @@ function Running({ user }) {
     <div className="w-full py-16 text-white bg-black">
       <div className="">
         <div className="max-w-[1240px] mx-auto grid md:grid-cols-2 gap-8 px-5  ">
-          <div></div>
+          <div className='h-[20rem] flex flex-col justify-center  rounded-md shadow-xl "'>
+            <img
+              alt="walking-img"
+              src="https://images.pexels.com/photos/235922/pexels-photo-235922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              className="rounded-2xl"
+            ></img>
+          </div>
           <div className="h-[20rem] flex flex-col justify-end rounded-md shadow-xl hover:scale-105 duration-300 text-white">
             <h1 className=" text-bold md:text-3xl sm:text-2xl text-xl py-8 px-4 text-center text-white">
               Running

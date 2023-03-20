@@ -41,6 +41,15 @@ function Walking({ data, user }) {
               </button>
             )}
           </div>
+          <div className="artboard phonetext-black">
+            <div className='h-[20rem] flex flex-col justify-center  rounded-md shadow-xl "'>
+              <img
+                alt="walking-img"
+                src="https://images.pexels.com/photos/3604913/pexels-photo-3604913.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                className="rounded-2xl"
+              ></img>
+            </div>
+          </div>
         </div>
       </div>
     </div>
