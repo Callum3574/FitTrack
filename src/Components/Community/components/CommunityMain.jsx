@@ -1,6 +1,6 @@
 import React from "react";
 import CurrentFriends from "./CurrentFriends.jsx";
-
+import AddFriend from "./AddFriend";
 function WalkingMain() {
   return (
     <div className="py-4 text-black bg-white  w-screen">
@@ -25,6 +25,9 @@ function WalkingMain() {
       <div className="shadow-[#60e260] flex flex-col justify-evenly border text-center mx-auto mt-5 mb-5 max-w-[1024px]">
         <h1>You have 4 Friends Online!</h1>
         <CurrentFriends />
+      </div>
+      <div className="shadow-[#60e260] flex flex-col justify-evenly border text-center mx-auto mt-5 mb-5 max-w-[1024px]">
+        <AddFriend />
       </div>
     </div>
   );
