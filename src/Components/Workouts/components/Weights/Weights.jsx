@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Weights({user}) {
+function Weights({ user }) {
   return (
     <div className="w-full py-16 text-black bg-white">
       <div className="">
@@ -32,6 +32,13 @@ function Weights({user}) {
                 SIGN UP FOR ACCESS
               </button>
             )}
+          </div>
+          <div className='h-[20rem] flex flex-col justify-center  rounded-md shadow-xl "'>
+            <img
+              alt="walking-img"
+              src="https://images.pexels.com/photos/841128/pexels-photo-841128.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              className="rounded-2xl"
+            ></img>
           </div>
         </div>
       </div>

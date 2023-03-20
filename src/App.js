@@ -7,6 +7,8 @@ import Workouts from "./Components/Workouts/Workouts";
 import WeightsDash from "./Components/Workouts/components/Weights/WeightsDash";
 import RunningDash from "./Components/Workouts/components/Running/RunningDash";
 import WalkingDash from "./Components/Workouts/components/Walking/WalkingDash";
+import Community from "./Components/Community/Community";
+import MessagingMain from "./Components/Messaging/MessagingMain.jsx";
 import NotFound404 from "./Components/Partials/404";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./Contexts/AuthContext";
@@ -44,6 +46,13 @@ function App() {
               path="/workouts/weights"
               element={<WeightsDash user={user} />}
             />
+            <Route
+              path="/community"
+              element={<Community setUser={setUser} user={user} />}
+            />
+
+            <Route path="/messages" element={<MessagingMain user={user} />} />
+
             <Route path="*" exact={true} element={<NotFound404 />} />
           </Routes>
         </AuthProvider>

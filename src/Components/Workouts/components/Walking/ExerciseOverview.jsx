@@ -37,7 +37,8 @@ function ExerciseOverview({ data, user }) {
         <a href=";" className="tab tab-bordered tab-active">
           Recent Walks
         </a>
-        <a href=";" className="tab tab-bordered">
+        <a href=";" className="indicator tab tab-bordered">
+          <span className="indicator-item badge">8</span>
           Data
         </a>
       </div>
