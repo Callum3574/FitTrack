@@ -6,50 +6,61 @@ const Chat = ({ user, friends }) => {
   const [message, setMessage] = useState("");
   const [room_id, setRoom_id] = useState("");
   const [messages, setMessages] = useState([]);
-  const [selectedFriend, setSelectedFriend] = useState(friends.friendsList[0]);
-  const sendMessage = async () => {
-    if (message.message !== "") {
+  const [selectedFriend, setSelectedFriend] = useState(null);
+
+  const handleSelectedFriend = (friend) => {
+    setSelectedFriend(friend);
+  };
+
+  const handleMessage = (e) => {
+    setMessage(e.target.value);
+  };
+
+  const sendMessage = () => {
+    if (message !== "") {
       const messageData = {
         room: room_id,
         icon: user.icon,
         author: user.name,
-        message: message,
+        messages: message,
         time:
           new Date(Date.now()).getHours() +
           ":" +
           new Date(Date.now()).getMinutes(),
       };
-      await socket.emit("send_message", messageData, room_id);
+      socket.emit("send_message", messageData, room_id);
+      setMessages((prev) => {
+        return [...prev, messageData];
+      });
       setMessage("");
     }
   };
 
-  const joinRoom = () => {
-    if (room_id !== "") {
-      socket.emit("join_room", room_id);
-    }
-  };
-
-  const handleMessage = (e) => {
-    e.preventDefault();
-    setMessage(e.target.value);
-  };
-
-  const handleRoom = (e) => {
-    e.preventDefault();
-
-    setRoom_id(e.target.value);
-  };
   useEffect(() => {
-    socket.on("receive_message", (data) => {
-      setMessages((prev) => {
-        return [...prev, data];
-      });
-    });
+    if (selectedFriend) {
+      const chatRoom = `chat_${[user.id, selectedFriend.id].sort().join("_")}`;
+      socket.emit("join_room", chatRoom);
+      setRoom_id(chatRoom);
+    }
+  }, [selectedFriend]);
 
-    console.log(messages);
-  }, [socket]);
+  useEffect(() => {
+    if (socket == null) return;
 
+    socket.on(
+      "receive_message",
+      (data) => {
+        setMessages((prev) => {
+          return [...prev, data];
+        });
+
+        return () => socket.off("receive_message");
+      },
+      [socket]
+    );
+
+    return () => socket.off("receive_message");
+  });
   return (
     <div className="flex h-screen font-sans">
       <div className="w-1/4 bg-gray-100 border-r">
@@ -59,13 +70,15 @@ const Chat = ({ user, friends }) => {
               <li
                 key={friend.id}
                 className={`p-4 cursor-pointer hover:bg-gray-200 ${
-                  selectedFriend.id === friend.id && "bg-gray-200"
+                  selectedFriend &&
+                  selectedFriend.id === friend.id &&
+                  "bg-gray-200"
                 }`}
-                onClick={() => setSelectedFriend(friend)}
+                onClick={() => handleSelectedFriend(friend)}
               >
                 <div className="flex items-center">
                   <div className="w-12 h-12 rounded-full bg-gray-400"></div>
-                  <div className="ml-4">{friend}</div>
+                  <div className="ml-4">{friend.firstname}</div>
                 </div>
               </li>
             ))}
@@ -73,9 +86,9 @@ const Chat = ({ user, friends }) => {
       </div>
       <div className="flex-1 flex flex-col">
         <div className="flex-1 overflow-y-scroll p-4">
-          {messages.map((newMess) => (
+          {messages.map((newMess, index) => (
             <div
-              // key={message.id}
+              key={index}
               className={`flex ${
                 newMess.author === user.name ? "justify-end" : "justify-start"
               } mb-2`}
@@ -97,7 +110,7 @@ const Chat = ({ user, friends }) => {
                     : "bg-gray-200"
                 }`}
               >
-                {newMess.author === user.name ? message : newMess.message}
+                {newMess.messages}
               </div>
             </div>
           ))}
@@ -111,25 +124,12 @@ const Chat = ({ user, friends }) => {
             name="message"
             value={message}
           />
-          <input
-            type="text"
-            placeholder="room-id"
-            onChange={handleRoom}
-            name="room_id"
-            value={room_id}
-            className="w-full sm:w-auto mb-4 sm:mb-0 sm:ml-4"
-          />
+
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded-full mb-4 sm:mb-0"
             onClick={sendMessage}
           >
             Send
-          </button>
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded-full"
-            onClick={joinRoom}
-          >
-            JOIN ROOM
           </button>
         </div>
       </div>

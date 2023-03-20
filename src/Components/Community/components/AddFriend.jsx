@@ -44,7 +44,7 @@ function AddFriend() {
           </div>
           <label
             onClick={() => {
-              addFriend(currentUser.uid, friendEmailAddress);
+              addNewFriend(currentUser.uid, friendEmailAddress);
             }}
             htmlFor="my-modal-6"
             className="mt-5 btn bg-[#00df9a] w-full rounded-md font-medium  text-black"
