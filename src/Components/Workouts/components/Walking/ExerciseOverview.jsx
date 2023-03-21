@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import InputNewWalk from "./InputNewWalk.jsx";
-import {
-  userLevel,
-  totalSteps,
-  totalWalks,
-  totalHoursWalked,
-  caloriesBurnt,
-  totalDistance,
-} from "../../../../CalcFunctions/CalcFunctions";
+
 import { fetchWeather } from "../../../Weather/Weather";
+import { useHighlights } from "../../../../Contexts/HighlightsContext.js";
 
 function ExerciseOverview({ data, user }) {
+  const {
+    userLevel,
+    totalSteps,
+    totalWalks,
+    totalHoursWalked,
+    caloriesBurnt,
+    totalDistance,
+  } = useHighlights();
+
   const [highlights, setHighlights] = useState({
     currentRank: userLevel(data),
     totalSteps: totalSteps(data),
