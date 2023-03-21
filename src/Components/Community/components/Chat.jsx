@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { addNewMessage } from "../../../Networking/inputNewMessagePOST";
+import { allMessages } from "../../../Networking/displayAllMessagesGET";
 import io from "socket.io-client";
 const socket = io.connect("http://localhost:4000");
 
@@ -8,6 +10,19 @@ const Chat = ({ user, friends }) => {
   const [messages, setMessages] = useState([]);
   const [selectedFriend, setSelectedFriend] = useState(null);
 
+  useEffect(() => {
+    const settingConversationMessages = async (current_room_id) => {
+      setMessages(await allMessages(current_room_id));
+    };
+    if (room_id) {
+      settingConversationMessages(room_id);
+    }
+  }, [room_id]);
+
+  useEffect(() => {
+    console.log(messages);
+  }, [room_id]);
+
   const handleSelectedFriend = (friend) => {
     setSelectedFriend(friend);
   };
@@ -16,7 +31,7 @@ const Chat = ({ user, friends }) => {
     setMessage(e.target.value);
   };
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     if (message !== "") {
       const messageData = {
         room: room_id,
@@ -32,6 +47,10 @@ const Chat = ({ user, friends }) => {
       setMessages((prev) => {
         return [...prev, messageData];
       });
+
+      await addNewMessage(room_id, selectedFriend.id, user.id, message);
+      console.log(selectedFriend.id);
+
       setMessage("");
     }
   };
@@ -110,7 +129,7 @@ const Chat = ({ user, friends }) => {
                     : "bg-gray-200"
                 }`}
               >
-                {newMess.messages}
+                {newMess.message}
               </div>
             </div>
           ))}

@@ -8,12 +8,10 @@ import WeightsDash from "./Components/Workouts/components/Weights/WeightsDash";
 import RunningDash from "./Components/Workouts/components/Running/RunningDash";
 import WalkingDash from "./Components/Workouts/components/Walking/WalkingDash";
 import Community from "./Components/Community/Community";
-import MessagingMain from "./Components/Messaging/MessagingMain.jsx";
 import NotFound404 from "./Components/Partials/404";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./Contexts/AuthContext";
 import { ContactsProvider } from "./Contexts/ContactsProvider";
-import { useSelector } from "react-redux";
 import { ApiProvider } from "@reduxjs/toolkit/query/react";
 import { gymDataApi } from "./store/slices/GymDataSlice";
 function App() {
@@ -22,8 +20,8 @@ function App() {
   return (
     <div className="App">
       <ApiProvider api={gymDataApi}>
-        <ContactsProvider>
-          <AuthProvider>
+        <AuthProvider>
+          <ContactsProvider>
             <Routes>
               <Route
                 path="/"
@@ -53,12 +51,10 @@ function App() {
                 element={<Community setUser={setUser} user={user} />}
               />
 
-              <Route path="/messages" element={<MessagingMain user={user} />} />
-
               <Route path="*" exact={true} element={<NotFound404 />} />
             </Routes>
-          </AuthProvider>
-        </ContactsProvider>
+          </ContactsProvider>
+        </AuthProvider>
       </ApiProvider>
     </div>
   );
