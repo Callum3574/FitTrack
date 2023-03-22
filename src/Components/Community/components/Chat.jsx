@@ -35,20 +35,20 @@ const Chat = ({ user, friends }) => {
     if (message !== "") {
       const messageData = {
         room: room_id,
-        icon: user.icon,
-        author: user.name,
-        messages: message,
-        time:
-          new Date(Date.now()).getHours() +
-          ":" +
-          new Date(Date.now()).getMinutes(),
+        from_user: user.id,
+        to_user: selectedFriend.id,
+        message: message,
+        // time:
+        //   new Date(Date.now()).getHours() +
+        //   ":" +
+        //   new Date(Date.now()).getMinutes(),
       };
       socket.emit("send_message", messageData, room_id);
       setMessages((prev) => {
         return [...prev, messageData];
       });
 
-      await addNewMessage(room_id, selectedFriend.id, user.id, message);
+      await addNewMessage(messageData);
       console.log(selectedFriend.id);
 
       setMessage("");
@@ -109,7 +109,7 @@ const Chat = ({ user, friends }) => {
             <div
               key={index}
               className={`flex ${
-                newMess.author === user.name ? "justify-end" : "justify-start"
+                newMess.from_user === user.id ? "justify-end" : "justify-start"
               } mb-2`}
             >
               <div className="avatar">
@@ -117,14 +117,16 @@ const Chat = ({ user, friends }) => {
                   <img
                     alt="PP"
                     src={
-                      newMess.author === user.name ? user.icon : newMess.icon
+                      newMess.from_user === user.id
+                        ? user.icon
+                        : `https://api.dicebear.com/5.x/identicon/svg?seed=${selectedFriend.firstname}`
                     }
                   />
                 </div>
               </div>
               <div
                 className={`rounded-lg px-4 py-2 ${
-                  newMess.author === user.name
+                  newMess.from_user === user.id
                     ? "bg-blue-500 text-white"
                     : "bg-gray-200"
                 }`}
