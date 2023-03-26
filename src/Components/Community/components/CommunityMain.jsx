@@ -5,7 +5,7 @@ function WalkingMain() {
   return (
     <div className="py-4 text-black bg-white  w-screen">
       <div className="tabs flex flex-row justify-center mx-auto">
-        <a href="/messages" className="indicator tab tab-bordered">
+        <a href="/messaging" className="indicator tab tab-bordered">
           <span className="indicator-item badge">8</span>
           Messages
         </a>{" "}

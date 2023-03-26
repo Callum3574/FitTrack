@@ -6,7 +6,10 @@ function NavBox() {
   return (
     <div className="w-full py-16 text-black bg-white">
       <div className="max-w-[1240px] mx-auto grid md:grid-cols-3 gap-8 px-5 ">
-        <div className="h-[20rem] flex flex-col justify-center  rounded-md shadow-xl hover:scale-105 duration-300">
+        <div
+          className="h-[20rem] flex flex-col justify-center  rounded-md shadow-xl hover:scale-105 duration-300"
+          data-aos="fade-up"
+        >
           <MdOutlineDashboardCustomize
             className="mx-auto mt-[-5rem] "
             size={60}
@@ -22,7 +25,10 @@ function NavBox() {
             DASHBOARD
           </button>
         </div>
-        <div className="h-[20rem] flex flex-col justify-center  rounded-md shadow-xl hover:scale-105 duration-300 bg-gray-200 mt-6">
+        <div
+          className="h-[20rem] flex flex-col justify-center  rounded-md shadow-xl hover:scale-105 duration-300 bg-gray-200 mt-6"
+          data-aos="fade-up"
+        >
           <GiWalk className="mx-auto mt-[-5rem] " size={60} />
 
           <h1 className="text-[#000000] text-bold md:text-3xl sm:text-2xl text-l py-8 px-4 text-center">
@@ -37,7 +43,10 @@ function NavBox() {
             WALKS
           </button>
         </div>
-        <div className="h-[20rem] flex flex-col justify-center  rounded-md shadow-xl hover:scale-105 duration-300">
+        <div
+          className="h-[20rem] flex flex-col justify-center  rounded-md shadow-xl hover:scale-105 duration-300"
+          data-aos="fade-up"
+        >
           <GiAchievement className="mx-auto mt-[-3rem]" size={60} />
 
           <h1 className="text-[#000000] text-bold md:text-3xl sm:text-2xl text-xl py-8 px-4 text-center">

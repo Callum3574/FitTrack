@@ -34,13 +34,7 @@ function ChatInbox() {
         "Let's meet at 10am at the trailhead. I will send you the details.",
     },
   ];
-  return (
-    <div className="w-full py-16 text-white px-4 bg-black">
-      <div className="flex">
-        <div></div>
-      </div>
-    </div>
-  );
+  return <div className=""></div>;
 }
 
 export default ChatInbox;

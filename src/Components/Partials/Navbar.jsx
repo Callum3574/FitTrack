@@ -21,7 +21,7 @@ function Navbar({ user, setUser }) {
   return (
     <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-1 text-white w-full">
       <h1 className="text-3xl font-bold text-[#00df9a]">FitTrack.</h1>
-      <ul className="hidden md:flex">
+      <ul className="hidden md:flex ">
         <li className="p-4 cursor-pointer">
           <Link to="/">Home</Link>
         </li>

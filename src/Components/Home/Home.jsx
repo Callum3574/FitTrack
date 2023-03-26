@@ -24,7 +24,7 @@ function Home({ user, setUser }) {
   }, []);
 
   return (
-    <div>
+    <div className="scroll-smooth">
       <Navbar setUser={setUser} user={user} />
       <Hero user={user} />
       <Overview user={user} />
