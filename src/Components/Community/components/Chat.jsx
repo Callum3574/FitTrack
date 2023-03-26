@@ -10,6 +10,7 @@ const Chat = ({ user, friends }) => {
   const [messages, setMessages] = useState([]);
   const [selectedFriend, setSelectedFriend] = useState(null);
 
+  // When room changes, we make API call to grab all messages with selected room_id & update state
   useEffect(() => {
     const settingConversationMessages = async (current_room_id) => {
       setMessages(await allMessages(current_room_id));
@@ -19,42 +20,42 @@ const Chat = ({ user, friends }) => {
     }
   }, [room_id]);
 
-  useEffect(() => {
-    console.log(messages);
-  }, [room_id]);
-
+  // Manages the selected friend
   const handleSelectedFriend = (friend) => {
     setSelectedFriend(friend);
   };
 
+  // Handle the new message being typed
   const handleMessage = (e) => {
     setMessage(e.target.value);
   };
 
+  // Message objected created and sent to backend
   const sendMessage = async () => {
     if (message !== "") {
       const messageData = {
         room: room_id,
-        icon: user.icon,
-        author: user.name,
-        messages: message,
-        time:
-          new Date(Date.now()).getHours() +
-          ":" +
-          new Date(Date.now()).getMinutes(),
+        from_user: user.id,
+        to_user: selectedFriend.id,
+        message: message,
+        // time:
+        //   new Date(Date.now()).getHours() +
+        //   ":" +
+        //   new Date(Date.now()).getMinutes(),
       };
       socket.emit("send_message", messageData, room_id);
       setMessages((prev) => {
         return [...prev, messageData];
       });
 
-      await addNewMessage(room_id, selectedFriend.id, user.id, message);
+      await addNewMessage(messageData);
       console.log(selectedFriend.id);
 
       setMessage("");
     }
   };
 
+  // When selected friend changes, we sent new chatroom to server -> creates chat_room_id
   useEffect(() => {
     if (selectedFriend) {
       const chatRoom = `chat_${[user.id, selectedFriend.id].sort().join("_")}`;
@@ -63,6 +64,7 @@ const Chat = ({ user, friends }) => {
     }
   }, [selectedFriend]);
 
+  // When socket changes, we listen for receive from server.
   useEffect(() => {
     if (socket == null) return;
 
@@ -109,7 +111,7 @@ const Chat = ({ user, friends }) => {
             <div
               key={index}
               className={`flex ${
-                newMess.author === user.name ? "justify-end" : "justify-start"
+                newMess.from_user === user.id ? "justify-end" : "justify-start"
               } mb-2`}
             >
               <div className="avatar">
@@ -117,14 +119,16 @@ const Chat = ({ user, friends }) => {
                   <img
                     alt="PP"
                     src={
-                      newMess.author === user.name ? user.icon : newMess.icon
+                      newMess.from_user === user.id
+                        ? user.icon
+                        : `https://api.dicebear.com/5.x/identicon/svg?seed=${selectedFriend.firstname}`
                     }
                   />
                 </div>
               </div>
               <div
                 className={`rounded-lg px-4 py-2 ${
-                  newMess.author === user.name
+                  newMess.from_user === user.id
                     ? "bg-blue-500 text-white"
                     : "bg-gray-200"
                 }`}
@@ -138,7 +142,9 @@ const Chat = ({ user, friends }) => {
           <input
             type="text"
             className="flex-1 px-4 py-2 rounded-full border-2 border-gray-200 mr-4 mb-4 sm:mb-0"
-            // placeholder={`Message ${selectedFriend.name}...`}
+            placeholder={`Message ${
+              selectedFriend && selectedFriend.firstname
+            }...`}
             onChange={handleMessage}
             name="message"
             value={message}

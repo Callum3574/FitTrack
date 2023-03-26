@@ -6,6 +6,7 @@ import Chat from "./components/Chat";
 import { useAuth } from "../../Contexts/AuthContext.js";
 import { useContact } from "../../Contexts/ContactsProvider";
 import checkUser from "../Auth/CheckUser.jsx";
+import MessagingSect from "./components/MessagingSect";
 
 function Community({ user, setUser }) {
   const [friends, setFriends] = useState([]);
@@ -36,7 +37,7 @@ function Community({ user, setUser }) {
     <div>
       <Navbar user={user} />
       {currentUser && <CommunityMain />}
-      {currentUser && <Chat friends={friends} user={user} />}
+      {/* <MessagingSect friends={friends} user={user} /> */}
       <Footer />
     </div>
   );

@@ -3,7 +3,5 @@ export const allMessages = async (room_id) => {
     process.env.REACT_APP_BASE_URL + `display_messages/${room_id}`
   );
   const data = await res.json();
-
-  console.log(data);
-  return data;
+  return data.messages;
 };

@@ -9,11 +9,14 @@ import RunningDash from "./Components/Workouts/components/Running/RunningDash";
 import WalkingDash from "./Components/Workouts/components/Walking/WalkingDash";
 import Community from "./Components/Community/Community";
 import NotFound404 from "./Components/Partials/404";
+import Messaging from "./Components/Messaging/Messaging";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./Contexts/AuthContext";
 import { ContactsProvider } from "./Contexts/ContactsProvider";
 import { ApiProvider } from "@reduxjs/toolkit/query/react";
 import { gymDataApi } from "./store/slices/GymDataSlice";
+import "aos/dist/aos.css";
+
 function App() {
   const [user, setUser] = useState(null);
 
@@ -49,6 +52,10 @@ function App() {
               <Route
                 path="/community"
                 element={<Community setUser={setUser} user={user} />}
+              />
+              <Route
+                path="/messaging"
+                element={<Messaging setUser={setUser} user={user} />}
               />
 
               <Route path="*" exact={true} element={<NotFound404 />} />

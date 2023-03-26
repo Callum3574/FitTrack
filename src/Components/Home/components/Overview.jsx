@@ -9,16 +9,23 @@ function Overview({ user }) {
           className="w-[350px] mx-auto my-4"
           alt="img"
           src={SprintingDoodle}
+          data-aos="fade-right"
         ></img>
         <div className="flex flex-col justify-center">
-          <p className="text-[#00df9a] font-bold uppercase">
+          <p
+            className="text-[#00df9a] font-bold uppercase"
+            data-aos="fade-right"
+          >
             FitTrack Community{" "}
           </p>
-          <h1 className="md:text-4xl sm:text-3xl 2xl font-bold py-2 ">
+          <h1
+            className="md:text-4xl sm:text-3xl 2xl font-bold py-2 "
+            data-aos="fade-right"
+          >
             Share, Compete, Compare
           </h1>
 
-          <h1>
+          <h1 data-aos="fade-right">
             By sharing progress, communicating with others, and competing in
             challenges, our app provides a fun and effective way to stay
             motivated and achieve your fitness goals
@@ -26,13 +33,19 @@ function Overview({ user }) {
 
           {!user ? (
             <Link to="/signup">
-              <button className="bg-[#00df9a] w-[200px] rounded-md font-medium my-4 mx-auto md:mx-0 py-3 text-black uppercase">
+              <button
+                className="bg-[#00df9a] w-[200px] rounded-md font-medium my-4 mx-auto md:mx-0 py-3 text-black uppercase"
+                data-aos="fade-right"
+              >
                 JOIN FitTrack
               </button>
             </Link>
           ) : (
             <Link to="/community">
-              <button className="bg-[#00df9a] w-[200px] rounded-md font-medium my-4 mx-auto md:mx-0 py-3 text-black uppercase">
+              <button
+                className="bg-[#00df9a] w-[200px] rounded-md font-medium my-4 mx-auto md:mx-0 py-3 text-black uppercase"
+                data-aos="fade-right"
+              >
                 Community
               </button>
             </Link>
