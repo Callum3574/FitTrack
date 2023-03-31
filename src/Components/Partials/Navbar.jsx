@@ -29,6 +29,7 @@ function Navbar({ user, setUser }) {
         <li className="p-4 cursor-pointer">
           <Link to="/workouts">Workouts</Link>
         </li>
+
         <Link to="/community">
           <li className="p-4 cursor-pointer">Community</li>
         </Link>

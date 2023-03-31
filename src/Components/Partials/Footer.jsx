@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   AiFillGithub,
   AiFillTwitterCircle,
   AiFillLinkedin,
 } from "react-icons/ai";
+import AOS from "aos";
+
 import GroovyDoodle from "../../Assets/GroovyDoodle.svg";
 
 function Footer() {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <div className="max-w-[1240px] mx-auto py-4 px-4 grid lg:grid-cols-3 gap-8 text-gray-300 my-5 pl-6 ">
-      <div>
+      <div data-aos="fade-down">
         <h1 className="w-full text-3xl font-bold text-[#00df9a] ">FitTrack.</h1>
         <p className="py-4 ">
           Looking for a reliable and effective way to track your fitness
@@ -23,7 +28,7 @@ function Footer() {
         </div>
       </div>
       <div className="lg:col-span-1 flex justify-between py-4 px-8">
-        <div className="">
+        <div className="" data-aos="fade-down">
           <ul>
             <li className="text-lg py-2">Quick Links</li>
 
@@ -35,7 +40,10 @@ function Footer() {
           </ul>
         </div>
       </div>
-      <div className="sm:w-[25%] sm:col-span-3 lg:col-span-1 lg:w-[100%] py-2 md:w-[50%]">
+      <div
+        className="sm:w-[25%] sm:col-span-3 lg:col-span-1 lg:w-[100%] py-2 md:w-[50%]"
+        data-aos="fade-down"
+      >
         <img src={GroovyDoodle} alt="pic" />
       </div>
     </div>
