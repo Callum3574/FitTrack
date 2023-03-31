@@ -9,6 +9,8 @@ function Walking({ data, user }) {
     navigate("/workouts/walking", { state: { data: data, user: user } });
   };
 
+  console.log(user);
+
   return (
     <div className="w-full py-16 text-black bg-white">
       <div className="">

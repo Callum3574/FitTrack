@@ -1,7 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function Weights({ user }) {
+function Weights({ user, data }) {
+  const navigate = useNavigate();
+  const openWalkingDash = () => {
+    navigate("/workouts/weights", { state: { data: data, user: user } });
+  };
+  console.log(user);
+
   return (
     <div className="w-full py-16 text-black bg-white">
       <div className="">
@@ -19,7 +26,7 @@ function Weights({ user }) {
             </p>
             {user ? (
               <button
-                // onClick={openWalkingDash}
+                onClick={openWalkingDash}
                 className="bg-[#00df9a] w-[200px] rounded-md font-medium my-4 mx-auto py-3 text-black"
               >
                 DASHBOARD
