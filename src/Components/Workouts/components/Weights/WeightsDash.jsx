@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../../Partials/Navbar";
 import FindMeExercise from "./FindMeExercise.jsx";
-function WeightsDash() {
+import { generateExercise } from "../../../../Networking/generateExercise";
+function WeightsDash({ user }) {
+  const [aiRes, setAiRes] = useState("");
+
+  useEffect(() => {}, [aiRes]);
   return (
     <div>
-      <Navbar />
-      <FindMeExercise />
+      <Navbar user={user} />
+      <FindMeExercise aiRes={aiRes} setAiRes={setAiRes} />
     </div>
   );
 }
