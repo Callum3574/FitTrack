@@ -9,7 +9,6 @@ import { useDispatch } from "react-redux";
 import { useAuth } from "../../Contexts/AuthContext.js";
 import { useGetAllDataQuery } from "../../store/slices/GymDataSlice.js";
 import { useSelector } from "react-redux";
-
 function Workouts({ user, setUser }) {
   const { currentUser } = useAuth();
   const { data } = useGetAllDataQuery(currentUser ? currentUser.uid : null);

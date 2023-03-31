@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Typed from "react-typed";
 import { Link } from "react-router-dom";
-
 import AOS from "aos";
 
 function Hero({ user }) {
