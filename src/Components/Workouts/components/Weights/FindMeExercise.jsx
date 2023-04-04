@@ -1,28 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { generateExercise } from "../../../../Networking/generateExercise";
-function FindMeExercise({ aiRes, setAiRes }) {
-  const [textInput, setTextInput] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleText = (event) => {
-    event.preventDefault();
-    setTextInput(event.target.value);
+function FindMeExercise({ setText, text, setAiText }) {
+  const handleTextChange = (e) => {
+    e.preventDefault();
+    setText(e.target.value);
   };
 
-  const handleEnter = () => {
-    setSubmitted(!submitted);
+  const handleSubmit = async () => {
+    setAiText(await generateExercise(text));
   };
-
-  useEffect(() => {
-    const settingRes = async () => {
-      setAiRes(await generateExercise(textInput));
-    };
-
-    if (aiRes) {
-      settingRes();
-    }
-  }, [aiRes]);
-
   return (
     <div className="w-screen py-16 bg-[#f2f2f2]">
       <div className="flex justify-center space-x-4">
@@ -30,16 +16,14 @@ function FindMeExercise({ aiRes, setAiRes }) {
           type="text"
           placeholder="Type here"
           className="input input-bordered w-full max-w-xs"
-          onChange={handleText}
+          onChange={handleTextChange}
         />
-        <button onClick={handleEnter} className="btn">
+        <button onClick={handleSubmit} className="btn">
           ENTER
         </button>
       </div>
 
-      <div>
-        <p>{aiRes.content}</p>
-      </div>
+      <div></div>
     </div>
   );
 }

@@ -16,7 +16,7 @@ function Workouts({ user, setUser }) {
   const states = useSelector((state) => {
     return state;
   });
-  console.log(states);
+
   useEffect(() => {
     const checkingUser = async () => {
       setUser(await checkUser(currentUser));

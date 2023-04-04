@@ -7,7 +7,8 @@ export const generateExercise = async (text) => {
       body: JSON.stringify({ text }),
     }
   );
+
   const data = await res.json();
-  console.log(data[0].message.content);
+  console.log(data);
   return data[0].message.content;
 };
