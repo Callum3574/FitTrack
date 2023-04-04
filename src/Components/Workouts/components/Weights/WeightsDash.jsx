@@ -3,13 +3,14 @@ import Navbar from "../../../Partials/Navbar";
 import FindMeExercise from "./FindMeExercise.jsx";
 import { generateExercise } from "../../../../Networking/generateExercise";
 function WeightsDash({ user }) {
-  const [aiRes, setAiRes] = useState("");
+  const [text, setText] = useState("");
+  const [aiText, setAiText] = useState("");
 
-  useEffect(() => {}, [aiRes]);
   return (
     <div>
       <Navbar user={user} />
-      <FindMeExercise aiRes={aiRes} setAiRes={setAiRes} />
+      <FindMeExercise setText={setText} setAiText={setAiText} text={text} />
+      <p className="text-white text-6xl">{aiText}</p>
     </div>
   );
 }
